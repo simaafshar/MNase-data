@@ -13,7 +13,7 @@ import statistics
 import seaborn as sns
 ###select nucleosome with at least 75% sequence have mappability score =1
 
-data = pd.read_csv("dyads_mappable.bed",  sep = "\t", header=None)
+data = pd.read_csv("dyads_mappable.bed",  sep = "\t", header=None) ## nucleosmal DNA fragments with score1=1
 #split by chr
 hg_files = ["chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9",
              "chr10", "chr11", "chr12", "chr13" ,"chr14" ,"chr15" ,"chr16", "chr17", 
@@ -28,7 +28,6 @@ with open("dyads_mapibility_score1_ratio_all.bed",'w') as file:
     for chr_name in hg_files:
         mapability = mapability_chr[chr_name]
         for i in range(1,len(mapability) -1):
- #       for i in range(0,1000):
             pos0 = mapability.iloc[i-1][1]
             pos1 = mapability.iloc[i][1]
             pos2 = mapability.iloc[i+1][1]
@@ -36,10 +35,10 @@ with open("dyads_mapibility_score1_ratio_all.bed",'w') as file:
             if pos0 != pos1:
                 while pos2 == pos1 and i<=len(mapability) -3:
                     i = i +1
-                    sum_len = sum_len + mapability.iloc[i][11]
+                    sum_len = sum_len + mapability.iloc[i][11] ## add up the framents with socre =1 for each nucleosome
                     pos1 = mapability.iloc[i][1]
                     pos2 = mapability.iloc[i +1 ][1]
-                score1_ratio = sum_len/147
+                score1_ratio = sum_len/147 ## calculate the percentage of sequence with score =1 for each nucleosme
                 file.write(str(mapability.iloc[i][0]) +"\t" + str(mapability.iloc[i][1]) + "\t" + str(mapability.iloc[i][2]) + "\t" \
                            + str(mapability.iloc[i][3]) + "\t" + str(score1_ratio) +"\n")
                 
