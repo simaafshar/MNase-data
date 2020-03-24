@@ -3,8 +3,6 @@
 source activate env_nucperiod
 scripts=${PWD}/scripts
 
-cd sapiens  # move to workspace
-
 wig2bed < mnase_mids_combined_147.wig | gzip > mnase_mids_combined_147.bed.gz
 # Filter the fragments with 0 reads
 zcat < mnase_mids_combined_147.bed.gz | awk '{OFS="\t"}{ if($5>0){print $1, $2, $3, $5}}' | \
