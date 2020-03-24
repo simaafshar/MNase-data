@@ -75,39 +75,3 @@ source deactivate
 source activate env_crossmap
 CrossMap.py bed hg18ToHg19.over.chain.gz mnase_mids_stringency.bed.gz mnase_mids_stringency_hg19.bed
 gzip -f mnase_mids_stringency_hg19.bed
-source deactivate
-source activate env_nucperiod
-
-# Compute a regions file containing mappable non-genic regions
-cat gencode.v19.annotation.gtf |grep protein_coding | grep -w gene | \
-    awk '{OFS="\t";} {print $1, $4-501, $5+500}' |gzip > genes_extended.bed.gz
-# Convert the mappability file to bed
-bigWigToWig wgEncodeCrgMapabilityAlign36mer.bigWig wgEncodeCrgMapabilityAlign36mer.wig
-wig2bed --zero-indexed < wgEncodeCrgMapabilityAlign36mer.wig | gzip > wgEncodeCrgMapabilityAlign36mer.bed.gz
-# Filter unmappable regions
-zcat < wgEncodeCrgMapabilityAlign36mer.bed.gz | awk '$5==1' | gzip > wgEncodeCrgMapabilityAlign36mer_score1.bed.gz
-# Generate a mappability file without genic regions
-subtractBed -a wgEncodeCrgMapabilityAlign36mer_score1.bed.gz -b genes_extended.bed.gz |\
-    gzip > coverage.bed.gz
-
-# Get only nucleosomes in mappable non-genic regions
-zcat < mnase_mids_stringency_hg19.bed.gz | sort -k1,1 -k2,2n | \
-    awk '{OFS="\t";}{print $1, $2-73, $3+73, $4, $5, $6}'  | \
-    intersectBed -a stdin -b coverage.bed.gz -f 1 -sorted | \
-    awk '{OFS="\t";}{print $1, $2+73, $3-73, $4, $5, $6}' |  \
-    gzip > dyads.bed.gz
-    
-# Get the coordinates of the exons
-grep -w exon gencode.v19.annotation.gtf | grep protein_coding |\
-    gzip > gencode.v19.exon_protein_coding.gtf.gz
-python ${scripts}/exons.py gencode.v19.exon_protein_coding.gtf.gz \
-    cancer_gene_census.csv exons.bed.gz
-mergeBed -i exons.bed.gz | gzip > exons.merged.bed.gz
-    
-# Get only nucleosomes falling in genic regions
-zcat <  mnase_mids_stringency_hg19.bed.gz  | \
-    awk '{OFS="\t"}{print $1, $2-58, $3+58}' | \
-    intersectBed -a stdin -b exons.merged.bed.gz -f 1 | \
-    awk '{OFS="\t"}{print $1, $2+58, $3-58}' | \
-    sort -k1,1 -k2,2n | gzip > dyads_genic.bed.gz
-
