@@ -40,8 +40,8 @@ We intersect the scores with the indentified representative dyad position and cl
 0.5 - 1: strong position positioning_score_hg19_0.5.bed
 
 ## Filtering nucleosme by mapability score
-wgEncodeCrgMapabilityAlign36mer.bed.gz:
-The mappability score from the CRG36 alignability track in hg19.
+The mappability score from the CRG36 alignability track in hg19:
+http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeCrgMapabilityAlign36mer.bigWig
 wgEncodeCrgMapabilityAlign36mer_score1.bed.gz:
 region in hg19 with mapability score =1, indicating high uniquenss in mapping
 dyads_mappable.bed:
