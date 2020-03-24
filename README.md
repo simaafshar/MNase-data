@@ -1,12 +1,12 @@
 ## software and packages required
-
+python3
 crossmap
 bedops
 bedtools
 bigwigtowig
 bwtool 
 
-# MNase-data
+# Idenfity the representative dyad position from MNase-data
 The Methods and scripts for identifying the representative nucleosme dyads. The scripts are originally taken from "Somatic and Germline Mutation Periodicity Follow the Orientation of the DNA Minor Groove around Nucleosomes,DOI: 10.1016/j.cell.2018.10.004" and you can find the original scripts from: https://nbviewer.jupyter.org/urls/bitbucket.org/bbglab/nucleosome-periodicity/raw/master/nucleosomes/nucleosomes.ipynb
 
 
@@ -26,13 +26,6 @@ Uncompress this file before running the notebook
 
 The Cancer gene census from COSMIC v81, You can find information on how to get this version in https://cancer.sanger.ac.uk/cosmic/help/download#cmd
 
-## software and packages required
-
-crossmap
-bedops
-bedtools
-bigwigtowig
-bwtool 
 
 ## Classify the nucleosme by positioning score
 mnase_mids_stringency_hg19_sort.bed:
