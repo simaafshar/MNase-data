@@ -38,7 +38,7 @@ with open("dyads_mapibility_score1_ratio_all.bed",'w') as file:
                     sum_len = sum_len + mapability.iloc[i][11] ## add up the framents with socre =1 for each nucleosome
                     pos1 = mapability.iloc[i][1]
                     pos2 = mapability.iloc[i +1 ][1]
-                score1_ratio = sum_len/147 ## calculate the percentage of sequence with score =1 for each nucleosme
+                score1_ratio = sum_len/147 ## calculate the percentage of sequence with score =1 for each nucleosome
                 file.write(str(mapability.iloc[i][0]) +"\t" + str(mapability.iloc[i][1]) + "\t" + str(mapability.iloc[i][2]) + "\t" \
                            + str(mapability.iloc[i][3]) + "\t" + str(score1_ratio) +"\n")
                 
