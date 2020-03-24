@@ -38,7 +38,7 @@ We intersect the scores with the indentified representative dyad position and cl
 0.3 - 0.5: inermediated position positioning_score_hg19_0.3-0.5.bed
 0.5 - 1: strong position positioning_score_hg19_0.5.bed
 
-## Filtering nucleosme by mapability score:
+## Filtering nucleosme by mapability score: Nucleosome_mappable.sh and Nucleosome_mappable.py
 The mappability score from the CRG36 alignability track in hg19:
 http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeCrgMapabilityAlign36mer.bigWig
 wgEncodeCrgMapabilityAlign36mer_score1.bed.gz:
