@@ -6,11 +6,11 @@ bedtools
 bigwigtowig
 bwtool 
 
-# Idenfity the representative dyad position from MNase-data
+# Idenfity the representative dyad position from MNase-data: indentify_dyad.bash
 The Methods and scripts for identifying the representative nucleosme dyads. The scripts are originally taken from "Somatic and Germline Mutation Periodicity Follow the Orientation of the DNA Minor Groove around Nucleosomes,DOI: 10.1016/j.cell.2018.10.004" and you can find the original scripts from: https://nbviewer.jupyter.org/urls/bitbucket.org/bbglab/nucleosome-periodicity/raw/master/nucleosomes/nucleosomes.ipynb
 
 
-How to get the files to run the scripts:
+#How to get the files to run the scripts:
 
 The 147 bp length mid-fragments MNAse-seq reads which has been downloaded from http://eqtl.uchicago.edu/nucleosomes/midpoints/mnase_mids_combined_147.wig.gz
 Uncompress this file before running the notebook
@@ -27,19 +27,17 @@ Uncompress this file before running the notebook
 The Cancer gene census from COSMIC v81, You can find information on how to get this version in https://cancer.sanger.ac.uk/cosmic/help/download#cmd
 
 
-## Classify the nucleosme by positioning score
-mnase_mids_stringency_hg19_sort.bed:
-The representative dyad position following the protocal in Nuria Lopez-Bigas's Cell paper
-positioning_score:
-The Positioning score was taekn from the Prirchard's Plos Genetices paper.
+## Classify the nucleosme by positioning score: position_score.bash
+#How to get the files to run the scripts:
+The representative dyad position identified from MNase data:
+mnase_mids_stringency_hg19_sort.bed
+The Positioning score was taekn from the Prirchard's Plos Genetices paper and you can get it from:
+http://eqtl.uchicago.edu/nucleosomes/positioning_scores/mnase_mids_combined_142_to_152_scores/
+
 We intersect the scores with the indentified representative dyad position and classfied as three score ranges:
 0 - 0.3: weak position  positioning_score_hg19_0-0.3.bed
 0.3 - 0.5: inermediated position positioning_score_hg19_0.3-0.5.bed
 0.5 - 1: strong position positioning_score_hg19_0.5.bed
-
-positioning_score_hg19_0-0.3.bed  positioning_score_hg19_0.5.bed:
-
-This files contains the well-positioned nucleosome identified from Prirchard's Plos Genetices paper.
 
 ## Filtering nucleosme by mapability score
 wgEncodeCrgMapabilityAlign36mer.bed.gz:
