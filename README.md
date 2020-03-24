@@ -17,3 +17,11 @@ The positions of the genes downloaded from ftp://ftp.ebi.ac.uk/pub/databases/gen
 Uncompress this file before running the notebook
 
 The Cancer gene census from COSMIC v81, You can find information on how to get this version in https://cancer.sanger.ac.uk/cosmic/help/download#cmd
+
+## software and packages required
+
+crossmap
+bedops
+bedtools
+bigwigtowig
+bwtool 
