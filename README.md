@@ -28,7 +28,6 @@ The Cancer gene census from COSMIC v81, You can find information on how to get t
 
 
 ## Classify the nucleosme by positioning score: position_score.bash
-#How to get the files to run the scripts:
 The representative dyad position identified from MNase data:
 mnase_mids_stringency_hg19_sort.bed
 The Positioning score was taekn from the Prirchard's Plos Genetices paper and you can get it from:
@@ -39,11 +38,9 @@ We intersect the scores with the indentified representative dyad position and cl
 0.3 - 0.5: inermediated position positioning_score_hg19_0.3-0.5.bed
 0.5 - 1: strong position positioning_score_hg19_0.5.bed
 
-## Filtering nucleosme by mapability score
+## Filtering nucleosme by mapability score:
 The mappability score from the CRG36 alignability track in hg19:
 http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeCrgMapabilityAlign36mer.bigWig
 wgEncodeCrgMapabilityAlign36mer_score1.bed.gz:
 region in hg19 with mapability score =1, indicating high uniquenss in mapping
-dyads_mappable.bed:
-intersec the representative dyad position to the region in hg19 with mapability score =1,
-we can select nucleosome with at least 75% sequence have mappability score =1.
+
